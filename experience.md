@@ -1,9 +1,21 @@
 ## Experience and Projects
 
-I've been passionate about web development since I worked on my first project in 2008, on an electronic RMA system to replace our existing paper-based system. Since then, I've designed and implemented multiple systems and stacks top to bottom and improved and upgraded internal tooling and processes. Some of the bigger projects include:
+I've been passionate about web development since I worked on my first project in 2008, on an electronic RMA system to replace our existing paper-based system. Since then, I've designed and implemented multiple systems and stacks top to bottom and improved and upgraded internal tooling and processes. Some of the more notable projects include:
+
+### Privileged Access Management (2025)
+Piloted and implemented GCP's **PAM** capabilities. Normally, access to production is heavily restricted. On occasion, developers need to investigate or fix urgent issues there. I configured PAM to allow a much more streamlined method of temporarily granting elevated privileges, with the added benefit of increased visibility and auditability. 
+
+### Security Group Automation (2025)
+Designed a low-friction method of creating security groups in code. **Pulumi** parsed a yaml file with the declarative state of the groups, which then provisioned one-off groups or per-environment groups, allowing simple permissions management across microservices and decoupling of hidden deployment dependencies and start-up order.
+
+### Internal tooling microservices (2024)
+Deployed microservices to do things like track deployment status of other services across environments. Integrated with GitHub's deployments API to trigger real-time updates. Simplified the orchestration of cross-service deployments.
+
+### Migration to fully IaC environments (2021-2023)
+Moved all existing manually-created and self-hosted infrastructure and apps to new **GCP** projects using **Terraform** and **GitHub Actions**. Architected the environments and pipelines to ensure all regulatory requirements were met, favoring behind-the-scenes implementations and reduced red tape. Using the principle of "make the easy choice the right choice" to increase compliance and consistency. I developed the patterns to follow, documented everything along the way, communicated with the stakeholders to ensure all requirements were met, onboarded teams to the new environments, and followed up with additional quality-of-life improvements over time.
 
 ### Tools API (2020)
-Published a public API to allow various integrations and improvements to the platform. Implemented using **API Gateway** backed by **Lambdas** and pluggable custom authorizers. This enabled everything from triggering actions based on GitHub events to automatic creation of CI namespaces. Additionally, privileged pipeline processes can now be initiated securely from the pipelines, such as my favorite project of my career, using **cryptographic signatures** to verify artifact provenance and scope bounds. 
+Published a public API to allow various integrations and improvements to the platform. Implemented using **API Gateway** backed by **Lambdas** and pluggable custom authorizers. This enabled everything from triggering actions based on GitHub events to automatic creation of CI namespaces. Additionally, privileged pipeline processes can now be initiated securely from the pipelines, such as using **cryptographic signatures** to verify artifact provenance and scope bounds (this was a very fun project for me).
 
 ### Migration to cloud-based tooling (2019-2020)
 Moved our internal platform's build process from **Jenkins** to **CircleCI**, code from Bitbucket to Github, and artifacts from on-prem Artifactory to hosted **Artifactory**. Planned transition, set up examples to follow, created support channels and documentation, and guided developers through the migration. Our build process on Jenkins was fairly strict and locked down so that we could make certain guarantees about what was being deployed using the servers' highly privileged credentials, meaning that our team was the bottleneck whenever an update or a new feature was needed. As we moved to CircleCI, by laying a strong foundation using the **principle of least privilege**, we were able to vastly expand flexibility, empowering the development teams to help themselves, move at their own speed, and experiment in areas that we previously never would have had the bandwidth to support. Processes that previously had to be enforced at build time are now a deploy time check using the tools API I wrote.
